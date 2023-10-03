@@ -5,34 +5,53 @@ size_t	ft_strlen(const char *str)
 	size_t	count;
 
 	count = 0;
+	if (!str)
+		return (0);
 	while (str[count] != '\0')
 		count++;
 	return (count);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *str, int c)
 {
-	while ((char)c != *s)
+	size_t	index;
+
+	index = 0;
+	if (!str)
+		return (NULL);
+	while (str[index])
 	{
-		if (!*s)
-			return (NULL);
-		s++;
+		if (str[index] == (char)c)
+			return (str + index);
+		index++;
 	}
-	return ((char *)s);
+	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *file_str, char *buf)
 {
-	char	*newarray;
-	size_t	len;
+	size_t	i;
+	size_t	j;
+	char	*new_str;
 
-	if (!s1 || !s2)
+	if (!file_str)
+	{
+		file_str = malloc(sizeof(char) * 1);
+		file_str[0] = '\0';
+	}
+	if (!file_str || !buf)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	newarray = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newarray)
+	new_str = malloc(sizeof(char) * ((ft_strlen(file_str) + ft_strlen(buf)) + 1));
+	if (!new_str)
 		return (NULL);
-	ft_strlcpy(newarray, s1, len + 1);
-	ft_strlcat(newarray, s2, len + 1);
-	return (newarray);
+	i = 0;
+	j = 0;
+	if (file_str)
+		while (file_str[i++])
+			new_str[i] = file_str[i];
+	while (buf[j])
+		new_str[i++] = buf[j++];
+	new_str[i] = '\0';
+	free(file_str);
+	return (new_str);
 }
