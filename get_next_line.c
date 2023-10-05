@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:32:13 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:34:56 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*search_indention(char *file_str)
 	char	*next_line;
 
 	index = 0;
+	if (!file_str[index])
+		return (NULL);
 	while (file_str[index] && file_str[index] != '\n')
 		index++;
 	next_line = malloc(sizeof(char) * (index + 2));
