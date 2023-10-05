@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:40:27 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:43:34 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ char	*read_file_str(int fd, char *file_str)
 	free(buf);
 	return (file_str);
 }
-
 
 char	*get_next_line(int fd)
 {
