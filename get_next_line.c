@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/02 19:19:08 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:15:26 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,15 @@ static void destructor() {
     system("leaks -q a.out");
 }
 
-int main(void)
-{
-	int fd;
-	char *line;
+// int main(void)
+// {
+// 	int fd;
+// 	char *line;
 
-	fd = open("test/test1.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s\n", line);
-	free(line);
+// 	fd = open("test/test1.txt", O_RDONLY);
+// 	line = get_next_line(fd);
+// 	printf("%s\n", line);
+// 	free(line);
 
-	return (0);
-}
+// 	return (0);
+// }
