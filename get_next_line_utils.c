@@ -47,8 +47,11 @@ char	*ft_strjoin(char *file_str, char *buf)
 	i = 0;
 	j = 0;
 	if (file_str)
-		while (file_str[i++])
+		while (file_str[i])
+		{
 			new_str[i] = file_str[i];
+			i++;
+		}
 	while (buf[j])
 		new_str[i++] = buf[j++];
 	new_str[i] = '\0';

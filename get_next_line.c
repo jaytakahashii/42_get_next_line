@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:15:26 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:32:13 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-#include <stdio.h>
-#include <fcntl.h>
+// #include <stdio.h>
+// #include <fcntl.h>
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q a.out");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q a.out");
+// }
 
 // int main(void)
 // {
