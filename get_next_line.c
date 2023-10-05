@@ -6,13 +6,13 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:43:34 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:18:36 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*new_file_str(char *file_str)
+static char	*new_file_str(char *file_str)
 {
 	size_t	i;
 	size_t	j;
@@ -38,7 +38,7 @@ char	*new_file_str(char *file_str)
 	return (new_file_str);
 }
 
-char	*search_indention(char *file_str)
+static char	*search_indention(char *file_str)
 {
 	size_t	index;
 	char	*next_line;
@@ -66,7 +66,7 @@ char	*search_indention(char *file_str)
 	return (next_line);
 }
 
-char	*read_file_str(int fd, char *file_str)
+static char	*read_file_str(int fd, char *file_str)
 {
 	char	*buf;
 	int		read_byte;
@@ -109,19 +109,55 @@ char	*get_next_line(int fd)
 // #include <fcntl.h>
 
 // __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q a.out");
+// static void	destructor(void)
+// {
+// 	system("leaks -q a.out");
 // }
 
-// int main(void)
+// int	main(void)
 // {
-// 	int fd;
-// 	char *line;
+// 	int		fd1;
+// 	int		fd2;
+// 	int		fd3;
+// 	char	*line;
 
-// 	fd = open("test/test1.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 	printf("%s\n", line);
+// 	fd1 = open("test/test1.txt", O_RDONLY);
+// 	fd2 = open("test/test2.txt", O_RDONLY);
+// 	fd3 = open("test/test3.txt", O_RDONLY);
+// 	if (fd1 < 0 || fd2 < 0 || fd3 < 0)
+// 		return (0);
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd1);
+// 		if (!line)
+// 			break ;
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	printf("\n\n\n\n");
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd2);
+// 		if (!line)
+// 			break ;
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	printf("\n\n\n\n");
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd3);
+// 		if (!line)
+// 			break ;
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	printf("\n\n\n");
+// 	line = get_next_line(1);
+// 	printf("%s", line);
 // 	free(line);
-
+// 	close(fd1);
+// 	close(fd2);
+// 	close(fd3);
 // 	return (0);
 // }

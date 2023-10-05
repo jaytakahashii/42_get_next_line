@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:48 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:46:41 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:02:13 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 100
 # endif
 
 char	*get_next_line(int fd);
-char	*read_file_str(int fd, char *file_str);
-
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(char *str, int c);
 char	*ft_strjoin(char *str, char *buf);
