@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 11:34:56 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:40:27 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	*new_file_str(char *file_str)
 	while (file_str[i] && file_str[i] != '\n')
 		i++;
 	if (!file_str[i])
+	{
+		free(file_str);
 		return (NULL);
+	}
 	new_file_str = malloc(sizeof(char) * ((ft_strlen(file_str) - i) + 1));
 	if (!new_file_str)
 		return (NULL);
@@ -31,6 +34,7 @@ char	*new_file_str(char *file_str)
 	while (file_str[i])
 		new_file_str[j++] = file_str[i++];
 	new_file_str[j] = '\0';
+	free(file_str);
 	return (new_file_str);
 }
 
