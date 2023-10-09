@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 16:42:05 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:37:40 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,14 @@ static char	*input_line(char *file_str)
 static char	*read_file_str(int fd, char *file_str)
 {
 	char	*buf;
-	int		read_byte;
+	ssize_t	read_byte;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+	{
+		free(file_str);
 		return (NULL);
+	}
 	read_byte = 1;
 	while ((ft_strchr(file_str, '\n') == NULL) && read_byte && file_str)
 	{
