@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 13:14:35 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:25:32 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*search_indention(char *file_str)
 static char	*read_file_str(int fd, char *file_str)
 {
 	char	*buf;
-	int		read_byte;
+	ssize_t	read_byte;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
@@ -81,6 +81,7 @@ static char	*read_file_str(int fd, char *file_str)
 		if (read_byte == -1)
 		{
 			free(buf);
+			free(file_str);
 			return (NULL);
 		}
 		buf[read_byte] = '\0';
