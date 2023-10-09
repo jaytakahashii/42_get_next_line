@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 15:14:41 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:17:09 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static char	*new_file_str(char *file_str)
 	}
 	new_file_str = malloc(sizeof(char) * ((ft_strlen(file_str) - i) + 1));
 	if (!new_file_str)
+	{
+		free(file_str);
 		return (NULL);
+	}
 	i++;
 	while (file_str[i])
 		new_file_str[j++] = file_str[i++];
