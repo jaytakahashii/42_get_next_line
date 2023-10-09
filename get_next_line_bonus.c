@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 17:39:52 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:41:23 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static char	*read_file_str(int fd, char *file_str)
 		return (NULL);
 	}
 	read_byte = 1;
-	while ((ft_strchr(file_str, '\n') == NULL) && read_byte && file_str)
+	while (file_str && read_byte && (ft_strchr(file_str, '\n') == NULL))
 	{
 		read_byte = read(fd, buf, BUFFER_SIZE);
 		if (read_byte == -1)
