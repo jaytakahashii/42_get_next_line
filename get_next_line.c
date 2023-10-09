@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 16:18:14 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:42:05 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static char	*new_file_str(char *file_str)
 	}
 	new_file_str = malloc(sizeof(char) * ((ft_strlen(file_str) - i) + 1));
 	if (!new_file_str)
+	{
+		free(file_str);
 		return (NULL);
+	}
 	i++;
 	while (file_str[i])
 		new_file_str[j++] = file_str[i++];
@@ -75,7 +78,7 @@ static char	*read_file_str(int fd, char *file_str)
 	if (!buf)
 		return (NULL);
 	read_byte = 1;
-	while ((ft_strchr(file_str, '\n') == NULL) && read_byte)
+	while ((ft_strchr(file_str, '\n') == NULL) && read_byte && file_str)
 	{
 		read_byte = read(fd, buf, BUFFER_SIZE);
 		if (read_byte == -1)
@@ -98,6 +101,13 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (!file_str)
+	{
+		file_str = (char *)malloc(sizeof(char) * 1);
+		if (!file_str)
+			return (NULL);
+		file_str[0] = '\0';
+	}
 	file_str = read_file_str(fd, file_str);
 	if (!file_str)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:46:06 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 14:21:39 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:44:17 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,11 @@ size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-static char	*ft_calloc_one(char *str)
-{
-	str = malloc(sizeof(char) * 1);
-	if (!str)
-		return (NULL);
-	str[0] = '\0';
-	return (str);
-}
-
 char	*ft_strchr(char *str, int c)
 {
 	size_t	index;
 
 	index = 0;
-	if (!str)
-		return (NULL);
 	while (str[index])
 	{
 		if (str[index] == (char)c)
@@ -55,13 +44,12 @@ char	*ft_strjoin(char *str, char *buf)
 	size_t	j;
 	char	*new_str;
 
-	if (!str)
-		str = ft_calloc_one(str);
-	if (!str || !buf)
-		return (NULL);
 	new_str = malloc(sizeof(char) * ((ft_strlen(str) + ft_strlen(buf)) + 1));
 	if (!new_str)
+	{
+		free(str);
 		return (NULL);
+	}
 	i = 0;
 	j = 0;
 	while (str[i])
