@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 16:17:09 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:18:14 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*new_file_str(char *file_str)
 	return (new_file_str);
 }
 
-static char	*search_indention(char *file_str)
+static char	*input_line(char *file_str)
 {
 	size_t	index;
 	char	*next_line;
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	file_str[fd] = read_file_str(fd, file_str[fd]);
 	if (!file_str[fd])
 		return (NULL);
-	next_line = search_indention(file_str[fd]);
+	next_line = input_line(file_str[fd]);
 	file_str[fd] = new_file_str(file_str[fd]);
 	return (next_line);
 }
