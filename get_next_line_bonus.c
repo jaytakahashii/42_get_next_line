@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 17:59:02 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:14:35 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	static char	*file_str[OPEN_MAX];
 	char		*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	file_str[fd] = read_file_str(fd, file_str[fd]);
 	if (!file_str[fd])
@@ -124,7 +124,8 @@ char	*get_next_line(int fd)
 
 // 	fd1 = open("test/test1.txt", O_RDONLY);
 // 	fd2 = open("test/test2.txt", O_RDONLY);
-// 	fd3 = open("test/test3.txt", O_RDONLY);
+// 	fd3 = INT_MAX;
+// 	// fd3 = open("test/test3.txt", O_RDONLY);
 // 	if (fd1 < 0 || fd2 < 0 || fd3 < 0)
 // 		return (0);
 // 	// while (1)
