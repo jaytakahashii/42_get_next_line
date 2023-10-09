@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:46:06 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/05 17:21:01 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:29:11 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ char	*ft_strchr(char *str, int c)
 	size_t	index;
 
 	index = 0;
-	if (!str)
-		return (NULL);
 	while (str[index])
 	{
 		if (str[index] == (char)c)

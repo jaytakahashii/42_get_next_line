@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 16:18:14 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:29:37 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,13 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (!file_str[fd])
+	{
+		file_str[fd] = (char *)malloc(sizeof(char *) * 1);
+		if (!file_str[fd])
+			return (NULL);
+		file_str[fd][0] = '\0';
+	}
 	file_str[fd] = read_file_str(fd, file_str[fd]);
 	if (!file_str[fd])
 		return (NULL);
