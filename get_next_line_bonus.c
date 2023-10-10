@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 13:14:26 by jtakahas          #+#    #+#             */
-/*   Updated: 2023/10/09 19:40:51 by jtakahas         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:41:23 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*new_file_str(char *file_str)
 {
@@ -99,23 +99,23 @@ static char	*read_file_str(int fd, char *file_str)
 
 char	*get_next_line(int fd)
 {
-	static char	*file_str;
+	static char	*file_str[OPEN_MAX];
 	char		*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!file_str)
+	if (!file_str[fd])
 	{
-		file_str = (char *)malloc(sizeof(char) * 1);
-		if (!file_str)
+		file_str[fd] = (char *)malloc(sizeof(char *) * 1);
+		if (!file_str[fd])
 			return (NULL);
-		file_str[0] = '\0';
+		file_str[fd][0] = '\0';
 	}
-	file_str = read_file_str(fd, file_str);
-	if (!file_str)
+	file_str[fd] = read_file_str(fd, file_str[fd]);
+	if (!file_str[fd])
 		return (NULL);
-	next_line = input_line(file_str);
-	file_str = new_file_str(file_str);
+	next_line = input_line(file_str[fd]);
+	file_str[fd] = new_file_str(file_str[fd]);
 	return (next_line);
 }
 
@@ -134,39 +134,59 @@ char	*get_next_line(int fd)
 // 	int		fd2;
 // 	int		fd3;
 // 	char	*line;
+// 	int		i = 0;
 
 // 	fd1 = open("test/test1.txt", O_RDONLY);
 // 	fd2 = open("test/test2.txt", O_RDONLY);
-// 	fd3 = open("test/test3.txt", O_RDONLY);
+// 	fd3 = INT_MAX;
+// 	// fd3 = open("test/test3.txt", O_RDONLY);
 // 	if (fd1 < 0 || fd2 < 0 || fd3 < 0)
 // 		return (0);
-// 	while (1)
+// 	// while (1)
+// 	// {
+// 	// 	line = get_next_line(fd1);
+// 	// 	if (!line)
+// 	// 		break ;
+// 	// 	printf("%s", line);
+// 	// 	free(line);
+// 	// }
+// 	// printf("\n\n\n\n");
+// 	// while (1)
+// 	// {
+// 	// 	line = get_next_line(fd2);
+// 	// 	if (!line)
+// 	// 		break ;
+// 	// 	printf("%s", line);
+// 	// 	free(line);
+// 	// }
+// 	// printf("\n\n\n\n");
+// 	// while (1)
+// 	// {
+// 	// 	line = get_next_line(fd3);
+// 	// 	if (!line)
+// 	// 		break ;
+// 	// 	printf("%s", line);
+// 	// 	free(line);
+// 	// }
+// 	// printf("\n\n\n");
+
+// 	while (i < 10)
 // 	{
 // 		line = get_next_line(fd1);
-// 		if (!line)
-// 			break ;
-// 		printf("%s", line);
+// 		printf("test1 : %s\n", line);
 // 		free(line);
-// 	}
-// 	printf("\n\n\n\n");
-// 	while (1)
-// 	{
+
 // 		line = get_next_line(fd2);
-// 		if (!line)
-// 			break ;
-// 		printf("%s", line);
+// 		printf("test2 : %s\n", line);
 // 		free(line);
-// 	}
-// 	printf("\n\n\n\n");
-// 	while (1)
-// 	{
+
 // 		line = get_next_line(fd3);
-// 		if (!line)
-// 			break ;
-// 		printf("%s", line);
+// 		printf("test3 : %s\n", line);
 // 		free(line);
+// 		i++;
 // 	}
 // 	printf("\n\n\n");
+
 // 	line = get_next_line(1);
 // 	printf("%s", line);
 // 	free(line);
