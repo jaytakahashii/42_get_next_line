@@ -1,5 +1,3 @@
-# get_next_line
-
 <h1 align="center">
     get_next_line (Project at 42tokyo)
 </h1>
