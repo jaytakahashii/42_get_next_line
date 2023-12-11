@@ -12,22 +12,6 @@
 
 Reading a line from a file can be challenging, especially when dealing with different file sizes and formats. The `get_next_line` project at 42tokyo provides you with the opportunity to implement a function that efficiently reads a line from a file descriptor, allowing you to handle file input in a more versatile manner.
 
-## 📚 Usage
-
-### Requirements
-
-The project is written in C language and requires the **`cc` compiler** and some standard **C libraries** to run.
-
-### Instructions
-
-**1. Compiling the function**
-
-To compile the `get_next_line` function, go to its path and run:
-
-```shell
-$ make
-```
-
 ## 🚀 Updates
 
 ### Integrated into libft
