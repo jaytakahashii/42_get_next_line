@@ -3,6 +3,10 @@
 </h1>
 
 <p align="center">
+	<b><i>Final Score 125/100</i></b><br>
+</p>
+
+<p align="center">
     <b><i>READING A LINE FROM A FILE DESCRIPTOR</i></b><br>
 </p>
 
@@ -11,6 +15,11 @@
 > _The aim of this project is to create a function that reads a line from a file descriptor._
 
 Reading a line from a file can be challenging, especially when dealing with different file sizes and formats. The `get_next_line` project at 42tokyo provides you with the opportunity to implement a function that efficiently reads a line from a file descriptor, allowing you to handle file input in a more versatile manner.
+
+## ⚠️ Implementation Notes
+
+- `BUFFER_SIZE` is defined at compile time and controls the chunk size used during reading.
+- Proper memory management and handling multiple file descriptors (bonus part) were key challenges.
 
 ## 🚀 Updates
 
